@@ -1,0 +1,86 @@
+<Window x:Class="WpfApp5.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="Window3" Height="900" Width="1280" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <SolidColorBrush x:Key="s_backgroud1" Color="#FF383838"/>
+        <SolidColorBrush x:Key="s_backgroud2" Color="#FFB6B6B6"/>
+        <SolidColorBrush x:Key="s_backgroud_highlight" Color="White"/>
+        <SolidColorBrush x:Key="s_top_text_color" Color="#FF383838"/>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <Style x:Key="topButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource s_backgroud2}"/>
+            <Setter Property="Foreground" Value="{StaticResource s_top_text_color}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" >
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="{StaticResource s_backgroud1}"/>
+                                <Setter Property="Foreground"  Value="{StaticResource s_backgroud2}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="BorderThickness" Value="5"/>
+                                <Setter Property="Background" Value="{StaticResource s_backgroud1}"/>
+                                <Setter Property="Foreground"  Value="White"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource s_backgroud2}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="342"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Label_uname" Content="ID:aksudya" Grid.Column="1" VerticalAlignment="Top" FontSize="18" Height="33" Margin="0,0,222,0"/>
+            <Label x:Name="Label_dnumber" Content="总销售游戏份数:1023" Grid.Column="1" VerticalAlignment="Top" FontSize="18" Height="33" Margin="0,33,0,0"/>
+            <Label x:Name="Label_dmoney" Content="总销售金额：¥120.78" Grid.Column="1" VerticalAlignment="Bottom" Height="25"/>
+            <Button Content="游戏列表" Grid.Column="4" Style="{DynamicResource topButtonStyle}" FontWeight="Bold" FontSize="20" FontFamily="Microsoft YaHei" PreviewMouseDoubleClick="List_Click" />
+            <Button Content="上架新游戏" Grid.Column="5" Style="{DynamicResource topButtonStyle}" FontWeight="Bold" FontSize="20" FontFamily="Microsoft YaHei" Click="NewGame_click" />
+            <Button Content="修改资料" Grid.Column="6" Style="{DynamicResource topButtonStyle}" FontWeight="Bold" FontSize="20" FontFamily="Microsoft YaHei" Click="changefile_click" />
+        </Grid>
+        <Frame x:Name="frameMain" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

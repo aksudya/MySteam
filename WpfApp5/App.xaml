@@ -1,9 +1,13 @@
-﻿<Application x:Class="WpfApp5.App"
+<Application x:Class="WpfApp5.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfApp5"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginWindow.xaml">
     <Application.Resources>
-         
+        
+        <SolidColorBrush x:Key="s_backgroud1" Color="#FF383838"/>
+        <SolidColorBrush x:Key="s_backgroud2" Color="#FFB6B6B6"/>
+        <SolidColorBrush x:Key="s_sell_background" Color="#4C6B22"/>
+        <SolidColorBrush x:Key="s_sell_Foreground" Color="#FF9CC808"/>
     </Application.Resources>
 </Application>

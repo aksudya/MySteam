@@ -1,0 +1,88 @@
+<Page x:Class="WpfApp5.PageCanBuy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp5"
+      mc:Ignorable="d" 
+      d:DesignHeight="171" d:DesignWidth="794"
+      Title="PageCanBuy">
+    <Page.Resources>
+        <LinearGradientBrush x:Key="s_button_color" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Offset="0" Color="#FF9CC808"/>
+            <GradientStop Offset="1" Color="#4C6B22"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="s_button_press_color" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Offset="1" Color="#FF9CC808"/>
+            <GradientStop Offset="0" Color="#4C6B22"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="s_button_over_color" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Offset="0" Color="#FFB0E400"/>
+            <GradientStop Offset="1" Color="#FF80B834"/>
+        </LinearGradientBrush>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource s_button_color}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource  s_sell_Foreground}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource s_button_over_color}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource s_button_press_color}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource s_backgroud2}">
+        <Grid Background="{StaticResource s_backgroud1}" Margin="20">
+            <Label x:Name="Label_GameName" Content="购买 Shadow of the Tomb Raider" Foreground="{DynamicResource s_backgroud2}" FontWeight="Bold" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" />
+            <Label x:Name="Label_text" Content="特别价格！ 7月6日截止" Foreground="LightSkyBlue" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,30" FontWeight="Bold" />
+            <Label x:Name="Label_selling_value" Content="-75%" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,150,0" FontSize="16" Background="{DynamicResource s_sell_background}" Foreground="{DynamicResource s_sell_Foreground}" FontWeight="Bold" />
+            <TextBlock  VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,110,0" FontSize="10" Background="Black" Foreground="{DynamicResource s_backgroud2}" Height="30" Width="40" TextAlignment="Center" >
+                <Run x:Name="beforesell" Text="¥56.78&#xA;" TextDecorations="Strikethrough" Foreground="DarkGray" FontSize="9" Block.TextAlignment="Center"/>
+                <Run x:Name="aftersell" Text="¥46.78" Foreground="White" Block.TextAlignment="Center"/>
+            </TextBlock>
+            <Button x:Name="Button_buy" Content="立即购买！" VerticalAlignment="Bottom" Height="30.32" HorizontalAlignment="Right" Width="83" Margin="0,0,27,0" Style="{DynamicResource ButtonStyle1}" Foreground="#FFE9FFC1" Click="Buy_click"/>
+        </Grid>
+    </Grid>
+</Page>

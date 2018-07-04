@@ -1,0 +1,96 @@
+<Window x:Class="WpfApp5.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="Window3" Height="866" Width="1044" ResizeMode="CanMinimize">
+    <Window.Resources>
+        <SolidColorBrush x:Key="s_backgroud1" Color="#FF383838"/>
+        <SolidColorBrush x:Key="s_backgroud2" Color="#FFB6B6B6"/>
+        <SolidColorBrush x:Key="s_backgroud_highlight" Color="White"/>
+        <SolidColorBrush x:Key="s_top_text_color" Color="#FF383838"/>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <Style x:Key="topButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource s_backgroud2}"/>
+            <Setter Property="Foreground" Value="{StaticResource s_top_text_color}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" >
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="{StaticResource s_backgroud1}"/>
+                                <Setter Property="Foreground"  Value="{StaticResource s_backgroud2}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="BorderThickness" Value="5"/>
+                                <Setter Property="Background" Value="{StaticResource s_backgroud1}"/>
+                                <Setter Property="Foreground"  Value="White"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource s_backgroud2}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="342"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Label_uname" Content="ID:aksudya" Grid.Column="1" VerticalAlignment="Top" FontSize="18" Height="33" Margin="0,0,222,0"/>
+            <Label Content="管理员" Grid.Column="1" VerticalAlignment="Top" FontSize="18" Height="33" Margin="0,33,0,0"/>
+
+
+            <Button Content="删除所选用户" Grid.Column="5" Style="{DynamicResource topButtonStyle}" FontWeight="Bold" FontSize="20" FontFamily="Microsoft YaHei" Click="delete_click" />
+            <Button Content="重置用户密码" Grid.Column="6" Style="{DynamicResource topButtonStyle}" FontWeight="Bold" FontSize="20" FontFamily="Microsoft YaHei" Click="resetpass_click" />
+        </Grid>
+        <Grid Grid.Row="1" Background="{StaticResource s_backgroud1}">
+            <DataGrid x:Name="DataGrid" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="591" Margin="239,0,196,73" Width="603"/>
+            <TextBox x:Name="TextBox_search"  Grid.Row="1" Width="222" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Margin="50,19,0,0"/>
+            <ComboBox x:Name="Order_choose" Grid.Row="1" Margin="0,18.828,50,0" Width="87" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource ComboBoxStyle1}" SelectedIndex="0" SelectionChanged="ContextChange" >
+                <ComboBoxItem Content="用户系统id" Style="{DynamicResource ComboBoxItemStyle1}" />
+                <ComboBoxItem Content="用户名" Style="{DynamicResource ComboBoxItemStyle1}"/>
+            </ComboBox>
+            <Label Grid.Row="1" Content="排序方式:" Background="#ECECEC" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,19,137,0" Height="21" FontSize="8" FontWeight="Bold"/>
+            <Button x:Name="Button_search" Content="搜索" Grid.Row="1" Width="53" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Margin="272,19,0,0" Click="Search_click"></Button>
+            
+        </Grid>
+    </Grid>
+</Window>

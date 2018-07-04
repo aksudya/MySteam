@@ -1,0 +1,48 @@
+<Window x:Class="WpfApp5.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="Window2" Height="600" Width="800" ResizeMode="CanMinimize">
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource s_backgroud1}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="73*"/>
+                <RowDefinition Height="131*"/>
+                <RowDefinition Height="121*"/>
+                <RowDefinition Height="75*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="234"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="mainShowImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="4" Source="resource/3.jpg"/>
+            <Image x:Name="Image_1"  Grid.Column="0" Grid.Row="3"  Source="resource/3.jpg" MouseEnter="image_enter"/>
+            <Image x:Name="Image_2" Grid.Column="1" Grid.Row="3"  Source="resource/1.2.jpg" MouseEnter="image_enter"/>
+            <Image x:Name="Image_3" Grid.Column="2" Grid.Row="3"  Source="resource/1.3.jpg" MouseEnter="image_enter"/>
+            <Image x:Name="Image_4" Grid.Column="3" Grid.Row="3"  Source="resource/1.4.jpg" MouseEnter="image_enter"/>
+            <TextBlock x:Name="TextBlock_Gname" Grid.Column="4" Grid.Row="0" Text="Shadow of the Tomb Raider" Foreground="White" FontSize="16" FontFamily="Microsoft YaHei" FontWeight="Bold" TextWrapping="Wrap" Margin="10,5,0,0"/>
+            <TextBlock x:Name="TextBlock_Gintro" Grid.Column="4" Grid.Row="1" Text="劳拉·克劳馥一路狂奔，拯救世界免遭玛雅预言中的天灾摧毁，她终将迎接命运，成长为命中注定的古墓侠盗。" TextWrapping="Wrap" Margin="10,0" Foreground="White" />
+            <TextBlock Grid.Column="4" Grid.Row="2" TextWrapping="Wrap" Margin="10,15,10,0" Foreground="White" VerticalAlignment="Top" >
+                <Run Text="全部评价：" Foreground="White"/>
+                <Run x:Name="TextBlock_review1" Text="好评如潮&#x0a;" Foreground="CornflowerBlue"/>
+                <Run x:Name="TextBlock_review2" Text="(54757个评价中有87%为好评)" Foreground="White"/>
+            </TextBlock>
+            <TextBlock x:Name="TextBlock_Gissue" Grid.Column="4" Grid.Row="2" Text="发行日期：2018年9月15日" TextWrapping="Wrap" Margin="10,60,10,0" Foreground="White" VerticalAlignment="Top" />
+            <TextBlock x:Name="TextBlock_dname" Grid.Column="4" Grid.Row="2" Text="开发商：Square Enix" TextWrapping="Wrap" Margin="10,0,10,15" Foreground="White" VerticalAlignment="Bottom" />
+        </Grid>
+        
+        <Frame x:Name="GameFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Window>
